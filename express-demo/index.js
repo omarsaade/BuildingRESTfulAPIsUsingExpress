@@ -18,11 +18,7 @@ app.get("/api/courses", (req, res) => {
 app.post("/api/courses", (req, res) => {
   const { error } = validateCourse(req.body);
 
-  if (error) {
-    //400 Bad request
-    res.status(400).send(result.error.details[0].message);
-    return;
-  }
+  if (error) return res.status(400).send(result.error.details[0].message);
 
   const course = {
     id: courses.length + 1,
@@ -46,6 +42,7 @@ app.put("/api/courses/:id", (req, res) => {
   const course = courses.find((c) => c.id === parseInt(req.params.id));
   if (!course)
     return res.status(404).send("The Course with the given ID was not found.");
+  //MAMNU3 YKAMEL IZA MAFI RES
 
   //Validate
   //If invalid, return 400- Bad request
@@ -66,7 +63,7 @@ app.put("/api/courses/:id", (req, res) => {
 app.delete("/api/courses/:id", (req, res) => {
   const course = courses.find((c) => c.id === parseInt(req.params.id));
   if (!course)
-    res.status(404).send("The Course with the given ID was not found.");
+    return res.status(404).send("The Course with the given ID was not found.");
   /*
   let filtered = courses.filter((e) => {
     return e.id !== parseInt(req.params.id);
