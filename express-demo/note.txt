@@ -1,0 +1,34 @@
+A middleware function :
+
+A middleware function is a function that takes a req object 
+add returns a response to the client or pases 
+control to another middleware function.
+
+express.json();
+express.raw();
+express.Router();
+express.static();
+
+
+                     Methods
+
+
+                            express.json([options])
+
+
+
+This middleware is available in Express v4.16.0 onwards.
+
+The JSON.parse() method converts a JSON value to a javascript object
+
+This is a built-in middleware function in Express. It parses incoming requests with
+ JSON payloads and is based on body-parser.
+Returns middleware that only parses JSON and only looks at requests where
+ the Content-Type header matches the type option. 
+
+A new body object containing the parsed data is populated on the request object after the 
+middleware (i.e. req.body), or an empty object ({}) if there was no body to parse, 
+the Content-Type was not matched, or an error occurred.
+
+
+ app.use() : we call this method to Install a middleware function in our request processing pipeline
