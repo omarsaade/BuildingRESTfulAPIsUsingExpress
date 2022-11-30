@@ -1,10 +1,13 @@
 const Joi = require("joi");
 const logger = require("./logger");
+const auth = require("./auth");
 const express = require("express");
 const app = express();
 
 //here we adding a json middleware function
-app.use(express.json());
+app.use(express.json()); //req.body
+app.use(express.urlencoded({ extended: true })); //key=value&key=value
+app.use(express.static("public"));
 
 //Building Custom Middleware Function
 app.use(function (req, res, next) {
@@ -14,6 +17,7 @@ app.use(function (req, res, next) {
 //Building Custom Middleware Function and importing from outside
 app.use(logger);
 
+app.use(auth);
 let courses = [
   { id: 1, name: "course1" },
   { id: 2, name: "course2" },

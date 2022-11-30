@@ -1,7 +1,7 @@
 //Building Custom Middleware Function
 
 function log(req, res, next) {
-  console.log("Authenticating...");
+  console.log("logo...");
   next();
 }
 
