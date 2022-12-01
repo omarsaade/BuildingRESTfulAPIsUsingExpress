@@ -18,6 +18,7 @@ app.use(function (req, res, next) {
 app.use(logger);
 
 app.use(auth);
+
 let courses = [
   { id: 1, name: "course1" },
   { id: 2, name: "course2" },
