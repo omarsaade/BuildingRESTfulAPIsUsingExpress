@@ -1,3 +1,5 @@
+const morgan = require("morgan");
+const helmet = require("helmet");
 const Joi = require("joi");
 const logger = require("./logger");
 const auth = require("./auth");
@@ -8,6 +10,8 @@ const app = express();
 app.use(express.json()); //req.body
 app.use(express.urlencoded({ extended: true })); //key=value&key=value
 app.use(express.static("public"));
+app.use(helmet());
+app.use(morgan("tiny")); //GET /api/courses 200 79 - 4.861 ms
 
 //Building Custom Middleware Function
 app.use(function (req, res, next) {
