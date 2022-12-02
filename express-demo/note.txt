@@ -226,4 +226,26 @@ On Windows: $env:NODE_ENV = 'production'
 
  ======================================================================
 
+Storing configuration settings for the application
+              and override them for each environment.
+
+
+                     Manage configuration
+
+
+              npm rc
+
+but there is a better one
+
+npm i config                //Install this one
+ It lets you define a set of default parameters, and extend them for different deployment
+ environments (development, qa, staging, production, etc.).
+
+
+for saving password in the environment
+
+   $env:app_password=12345
+
+
+===============================================================
 
