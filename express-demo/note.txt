@@ -167,5 +167,63 @@ const bodyParserMW = bodyParser.urlencoded({ extended: true });
 
 =============================================
 
+
+
 Third party middleware
+const morgan = require("morgan");
+const helmet = require("helmet");
+app.use(helmet());
+app.use(morgan("tiny")); //GET /api/courses 200 79 - 4.861 ms
+
+
+
+==============================================================================
+
+
+
+
+
+                              Environments
+
+
+               Production env     or    development env
+Whereas a development environment may contain several different versions
+ of a product or update being worked on and tested, a production environment
+  contains just the final version of the
+ product in order to avoid any confusion or security vulnerabilities.
+
+What's the difference? The development environment is your local computer
+, while the production environment is the live product
+ customers or visitors might interact with.
+
+ 
+ Logging yaane console.log()  tibe3a bel console
+
+
+
+
+    console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+
+
+     console.log(`app: ${app.get("env")}`);
+
+ 
+if (app.get("env") === "development") {
+  app.use(morgan("tiny")); //GET /api/courses 200 79 - 4.861 ms
+}
+
+
+
+how to set environment to production ?
+
+ 
+
+On Windows: $env:NODE_ENV = 'production'
+
+
+
+
+
+ ======================================================================
+
 

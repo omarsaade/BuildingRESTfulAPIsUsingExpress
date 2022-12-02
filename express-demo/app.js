@@ -6,12 +6,29 @@ const auth = require("./auth");
 const express = require("express");
 const app = express();
 
+/*
+
+process.env.NODE_ENV; // undefined
+console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+console.log(`app: ${app.get("env")}`);
+
+
+
+
+*/
 //here we adding a json middleware function
+
 app.use(express.json()); //req.body
 app.use(express.urlencoded({ extended: true })); //key=value&key=value
 app.use(express.static("public"));
 app.use(helmet());
-app.use(morgan("tiny")); //GET /api/courses 200 79 - 4.861 ms
+
+if (app.get("env") === "development") {
+  app.use(morgan("tiny")); //GET /api/courses 200 79 - 4.861 ms
+  console.log("Morgan enabled...");
+}
+
+// app.use(morgan("tiny")); //GET /api/courses 200 79 - 4.861 ms
 
 //Building Custom Middleware Function
 app.use(function (req, res, next) {
